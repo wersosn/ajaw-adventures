@@ -19,7 +19,7 @@ public class PipeScript : MonoBehaviour
         transform.position = transform.position + (Vector3.left * movement) * Time.deltaTime; // Moving the pipes
         if(transform.position.x < deadZone)
         {
-            Debug.Log("Pipe deleted");
+            Debug.Log("Pipe deleted"); // Debug
             Destroy(gameObject); // Destroy the game object that holds this script
         }
     }
