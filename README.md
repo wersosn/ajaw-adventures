@@ -7,7 +7,8 @@
 ## General info
 
 ## Tech stack
-
+-  C#
+-  Unity
 ## How to use
 
 ## How to play
