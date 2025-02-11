@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement; // To access more functionality (scene manage
 public class LogicScript : MonoBehaviour
 {
     public int score = 0; // Current score
-    public bool isRestarted = false; // Flag that checks if the game was restarted or not
     public Text textS; // Shown score
     public GameObject GameOver;
     public GameObject Ajaw;
@@ -33,7 +32,6 @@ public class LogicScript : MonoBehaviour
     //Game over:
     public void restartGame()
     {
-        isRestarted = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
