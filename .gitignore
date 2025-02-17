@@ -49,3 +49,8 @@ sysinfo.txt
 *.iml
 *.unityproj
 *.gradle/
+
+# Ignorowanie plików FirebaseCppApp
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-*.bundle
+Assets/Firebase/Plugins/x86_64/FirebaseCppApp-*.so
+Assets/StreamingAssets
