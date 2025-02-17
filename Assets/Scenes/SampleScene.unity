@@ -371,7 +371,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'New high score!! :D
+  m_Text: 'New highscore!! :D
 
 '
 --- !u!222 &562992502
@@ -1276,7 +1276,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'High Score:
+  m_Text: 'Highscore:
 
 '
 --- !u!222 &1823628251
