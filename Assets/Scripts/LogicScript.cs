@@ -17,13 +17,16 @@ public class LogicScript : MonoBehaviour
     public GameObject GameStart;
     public GameObject Pipes;
     public GameObject NewHighScore;
-    private string userId = "player1";
+    private string userId;
 
     public float minYdeath = -30;
     public float maxYdeath = 30;
 
     void Start()
     {
+        userId = GetUserId();
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        textHighScore.text = highScore.ToString();
         if (FirebaseManager.Instance == null)
         {
             Debug.LogError("FirebaseManager.Instance is null!");
@@ -35,15 +38,19 @@ public class LogicScript : MonoBehaviour
             Debug.LogError("highScoreText is null!");
             return;
         }
-        Debug.Log(minYdeath);
-        Debug.Log(maxYdeath);
-        Debug.Log($"Ajaw position.y: {Ajaw.transform.position.y}");
+
         FirebaseManager.Instance.InitializeFirebase(() =>
         {
             FirebaseManager.Instance.GetHighScore(userId, (retrievedHighScore) =>
             {
-                highScore = retrievedHighScore;
-                textHighScore.text = highScore.ToString();
+                if(retrievedHighScore > highScore)
+                {
+                    highScore = retrievedHighScore;
+                    textHighScore.text = highScore.ToString();
+                    PlayerPrefs.SetInt("HighScore", highScore);
+                    PlayerPrefs.Save();
+                    FirebaseManager.Instance.SaveHighScore(userId, highScore);
+                }
             });
         });
     }
@@ -53,6 +60,22 @@ public class LogicScript : MonoBehaviour
         if (Ajaw != null && Ajaw.transform.position.y < minYdeath || Ajaw.transform.position.y > maxYdeath)
         {
             gameOver();
+        }
+    }
+
+    public static string GetUserId()
+    {
+        string userIdKey = "UserID";
+        if (PlayerPrefs.HasKey(userIdKey))
+        {
+            return PlayerPrefs.GetString(userIdKey);
+        }
+        else
+        {
+            string newUserId = SystemInfo.deviceUniqueIdentifier;
+            PlayerPrefs.SetString(userIdKey, newUserId);
+            PlayerPrefs.Save();
+            return newUserId;
         }
     }
 
@@ -87,6 +110,8 @@ public class LogicScript : MonoBehaviour
             highScore = score;
             textHighScore.text = highScore.ToString();
             FirebaseManager.Instance.SaveHighScore(userId, highScore);
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
         }
     }
 }
