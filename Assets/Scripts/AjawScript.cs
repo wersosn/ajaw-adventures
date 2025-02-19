@@ -8,9 +8,12 @@ public class Script : MonoBehaviour
 {
     // Reference 
     public Rigidbody2D myRigidBody;
+    public AudioSource jumpSound;
     public float flapS; // Flap strength
     public LogicScript logic;
     public bool alive = true;
+    public float minYdeath = -30;
+    public float maxYdeath = 30;
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +24,29 @@ public class Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) == true || Input.GetMouseButtonDown(0) && alive == true) // Check if spacebar/left mouse button has been pressed on this frame
+        if((Input.GetKeyDown(KeyCode.Space) == true || Input.GetMouseButtonDown(0)) && alive == true) // Check if spacebar/left mouse button has been pressed on this frame
         {
             myRigidBody.velocity = Vector2.up * flapS; // Move body up
-        }  
+            if (jumpSound != null)
+            {
+                jumpSound.Play(); // Play jump sound
+            }
+        }
+        if((myRigidBody.transform.position.y < minYdeath || myRigidBody.transform.position.y > maxYdeath) && alive == true)
+        {
+            Debug.Log($"alive = {alive}");
+            logic.gameOver();
+            alive = false;
+        }
     }
 
     // Trigger game over screen
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        logic.gameOver();
-        alive = false;
+        if(alive)
+        {
+            logic.gameOver();
+            alive = false;
+        }
     }
 }
