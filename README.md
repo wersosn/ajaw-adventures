@@ -12,7 +12,7 @@ This project was created using the Game Maker's Toolkit tutorial: [Watch here](h
 
 ## Tech stack
 -  C#
--  Unity
+-  Unity 3.9.1
 -  Firebase
 
 ## Preview 
