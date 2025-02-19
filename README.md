@@ -10,9 +10,12 @@
 This is a small game project featuring Ajaw, a character from Genshin Impact. It is a Flappy Bird-style game designed to help me learn the basics of the Unity engine, game physics, and simple UI management.
 This project was created using the Game Maker's Toolkit tutorial: [Watch here](https://youtu.be/XtQMytORBmM?si=M80UK5ZLF0ifu6Hp).
 
+#### Sound effects
+The sounds used in the project come from [Pixabay](https://pixabay.com/sound-effects/)
+
 ## Tech stack
 -  C#
--  Unity 3.9.1
+-  Unity 2022.3.47f1
 -  Firebase
 
 ## Preview 
