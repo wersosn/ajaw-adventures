@@ -11,7 +11,7 @@ This is a small game project featuring Ajaw, a character from Genshin Impact. It
 This project was created using the Game Maker's Toolkit tutorial: [Watch here](https://youtu.be/XtQMytORBmM?si=M80UK5ZLF0ifu6Hp).
 
 #### Sound effects
-The sounds used in the project come from [Pixabay](https://pixabay.com/sound-effects/)
+The sounds used in the project come from [Pixabay](https://pixabay.com/sound-effects/).
 
 ## Tech stack
 -  C#
