@@ -1,6 +1,8 @@
 # Ajaw adventures
 ## Table of Contents
 - [General info](#general-info)
+  - [Graphics](#graphics)
+  - [Sound effects](#sound-effects)
 - [Tech stack](#tech-stack)
 - [Preview](#preview)
 - [How to play](#how-to-play)
@@ -10,7 +12,10 @@
 This is a small game project featuring Ajaw, a character from Genshin Impact. It is a Flappy Bird-style game designed to help me learn the basics of the Unity engine, game physics, and simple UI management.
 This project was created using the Game Maker's Toolkit tutorial: [Watch here](https://youtu.be/XtQMytORBmM?si=M80UK5ZLF0ifu6Hp).
 
-#### Sound effects
+### Graphics
+The **Ajaw PNG model** comes from a screenshot from Genshin Impact. The rest of the graphics were created by me using **Canva**.
+
+### Sound effects
 The sounds used in the project come from [Pixabay](https://pixabay.com/sound-effects/).
 
 ## Tech stack
