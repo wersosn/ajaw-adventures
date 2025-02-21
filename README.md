@@ -21,7 +21,7 @@ The sounds used in the project come from [Pixabay](https://pixabay.com/sound-eff
 ## Tech stack
 -  C#
 -  Unity 2022.3.47f1
--  Firebase
+-  Firebase Realtime Database
 
 ## Preview 
 To be added 😉
