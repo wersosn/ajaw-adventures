@@ -8,9 +8,13 @@ using System; // To access more functionality (scene management)
 public class LogicScript : MonoBehaviour
 {
     public int score = 0; // Current score
-    public int highScore = 0; // High score
-    public Text textS; // Shown score
-    public Text textHighScore;
+    public int highScore = 0; // Highscore
+    public bool alive = true;
+    private string userId;
+    public Text scoreText; // Shown score
+    public Text highScoreText; // Shown highscore
+
+    // Game objects:
     public GameObject GameOver;
     public GameObject Ajaw;
     public GameObject Score;
@@ -18,22 +22,19 @@ public class LogicScript : MonoBehaviour
     public GameObject Pipes;
     public GameObject NewHighScore;
     public AudioSource newHighScoreSound, gameOverSound;
-    public bool alive = true;
-    private string userId;
 
     void Start()
     {
         userId = GetUserId();
-        highScore = 0;
-        //highScore = PlayerPrefs.GetInt("HighScore", 0);
-        textHighScore.text = highScore.ToString();
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreText.text = highScore.ToString();
         if (FirebaseManager.Instance == null)
         {
             Debug.LogError("FirebaseManager.Instance is null!");
             return;
         }
 
-        if (textHighScore == null)
+        if (highScoreText == null)
         {
             Debug.LogError("highScoreText is null!");
             return;
@@ -46,7 +47,7 @@ public class LogicScript : MonoBehaviour
                 if(retrievedHighScore > highScore)
                 {
                     highScore = retrievedHighScore;
-                    textHighScore.text = highScore.ToString();
+                    highScoreText.text = highScore.ToString();
                     PlayerPrefs.SetInt("HighScore", highScore);
                     PlayerPrefs.Save();
                     FirebaseManager.Instance.SaveHighScore(userId, highScore);
@@ -55,6 +56,7 @@ public class LogicScript : MonoBehaviour
         });
     }
 
+    // Getting user id:
     public static string GetUserId()
     {
         string userIdKey = "UserID";
@@ -77,10 +79,11 @@ public class LogicScript : MonoBehaviour
         if (alive)
         {
             score += scoreToAdd;
-            textS.text = score.ToString();
+            scoreText.text = score.ToString();
         }
     }
 
+    // Starting game:
     public void startGame()
     {
         alive = true;
@@ -90,13 +93,13 @@ public class LogicScript : MonoBehaviour
         Pipes.SetActive(true);
     }
 
-    //Game over:
+    // Game over:
     public void restartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    //When the Ajaw crashes into a pipe - game over
+    // When the Ajaw crashes into a pipe - game over
     public void gameOver()
     {
         alive = false;
@@ -110,7 +113,7 @@ public class LogicScript : MonoBehaviour
                 newHighScoreSound.Play();
             }
             highScore = score;
-            textHighScore.text = highScore.ToString();
+            highScoreText.text = highScore.ToString();
             FirebaseManager.Instance.SaveHighScore(userId, highScore);
             PlayerPrefs.SetInt("HighScore", highScore);
             PlayerPrefs.Save();
