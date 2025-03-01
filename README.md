@@ -34,7 +34,7 @@ To be added 😉
 ## How to use
 1. To run this project, copy this repository:
 ```bash
-git clone https://github.com/wersosn/ajaw-adventures
+git clone https://github.com/wersosn/ajaw-adventures.git
 ```
 2. Open the project in Unity
 3. Run the main scene and start playing 😊
